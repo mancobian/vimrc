@@ -163,7 +163,7 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
+" 1 tab == 2 spaces
 set shiftwidth=2
 set tabstop=2
 
@@ -248,7 +248,17 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=%t                                 "filename (tail)
+set statusline+=\ %y                              "filetype
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=\ %{&ff}]                         "file format
+set statusline+=\ %h                              "help file flag
+set statusline+=%m                                "modified flag
+set statusline+=%r                                "read only flag
+set statusline+=%=                                "left/right separator
+set statusline+=\ Column:\ %c                     "cursor column
+set statusline+=\ Line:\ %l/%L                    "cursor line/total lines
+set statusline+=\ (%P)                            "percent through file
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
